@@ -6,6 +6,7 @@ public class ArrayQueue<T> implements Queue<T>{
 	private T[] Queue;
 	private static int front, rear;
 	
+	//constructor. initialize array of queue with length 10 and set front and rear to 0 because the array is empty at first.
 	public ArrayQueue()
 	{
 		front = rear = 0;
@@ -14,6 +15,8 @@ public class ArrayQueue<T> implements Queue<T>{
 	    
 	      
 	}
+	
+	//removes item from queue
 	public T dequeue() throws Exception
 	{
 		T placeholder = (T) Queue[front];
@@ -23,6 +26,7 @@ public class ArrayQueue<T> implements Queue<T>{
 		
 	}
 	
+	//inserts item taken as parameter into queue while doubling size if queue array happens to be full
 	public void enqueue(T item)
 	{
 		 if (size == Queue.length) 
@@ -30,10 +34,11 @@ public class ArrayQueue<T> implements Queue<T>{
 			 doubleSize();
 	     }
 		 Queue[rear] = item; 
-         rear++;
+         rear++; //after adding item rear index is increased by 1. same goes for size.
          size++;
 	}
 	
+	//returns true if empty and false otherwise
 	public boolean empty()
 	{
 		if(size == 10)
@@ -46,6 +51,7 @@ public class ArrayQueue<T> implements Queue<T>{
 		}
 	}
 	
+	//method for doubling the size of queue array when it is full. is called in enqueue.
 	public void doubleSize()
 	{
 		 int newSize = Queue.length * 2;
